@@ -75,7 +75,7 @@ def animate():
     def update(t):
                
         # Get eta for this timestep (integer divide isn't too slow)
-        eta_i = min(t/steps_per_eta_val, eta_i_max)
+        eta_i = min(t//steps_per_eta_val, eta_i_max)
         eta = eta_vals[eta_i]
         eta_text.set_text("$\eta=$%g" %eta)
 
