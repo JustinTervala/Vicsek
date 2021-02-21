@@ -17,9 +17,9 @@ v0 = v0_list[0]
 R = R_list[0]
 
 # Print parameters
-print "Computing burn-in times for the following parameters:"
-print "(v0, R, eta) = (%g, %g, 0)" %(v0,R)
-print "dt = %g" %dt
+print("Computing burn-in times for the following parameters:")
+print("(v0, R, eta) = (%g, %g, 0)" %(v0,R))
+print("dt = %g" %dt)
 
 # Want to track how far we are through the parameter combinations
 numN = len(N_list)
@@ -43,15 +43,15 @@ for N in N_list:
     # Create empty arrays for repeats
     nt_burn_repeats = np.zeros(repeats)
     
-    print ""
-    print "(L, N) = (%g, %g)" %(L,N)
+    print("")
+    print("(L, N) = (%g, %g)" %(L,N))
 
     # Loop over repeats
-    print "Simulation:"
+    print("Simulation:")
     for rep in range(repeats):
 
         # Print current repeat number
-        print "            %d/%d" %(rep+1,repeats)
+        print("            %d/%d" %(rep+1,repeats))
 
         # Create a brand new initial state
         state = model.init(L, N, v0, R, eta)
@@ -97,7 +97,7 @@ ax.errorbar(N_list, nt_burn_mean, yerr=nt_burn_stderr, fmt='ko')
 
 # Linear fit with weights = 1 / error
 coeffs = np.polyfit(N_list, nt_burn_mean, 1, w=1.0/nt_burn_stderr)
-print "Fit: nt_burn = %g x N + %g" %(coeffs[0],coeffs[1])
+print("Fit: nt_burn = %g x N + %g" %(coeffs[0],coeffs[1]))
 
 # Plot fit
 fit = np.array(N_list)*coeffs[0] + coeffs[1]

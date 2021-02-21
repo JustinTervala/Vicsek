@@ -70,7 +70,7 @@ if save == True:
 # Quick check that argument variables are valid
 plot_vars = ['N','v0','R','eta']
 if x_var not in plot_vars or lines_var not in plot_vars:
-    print "Error: invalid argument(s)"
+    print("Error: invalid argument(s)")
     exit(1)
 
 # The other two variables will be separated into separate plots

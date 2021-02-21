@@ -19,19 +19,19 @@ else:
 # eta_list is partitioned between the processes
 eta_list = eta_list[pid::Np]
 
-print ""
-print "------------------"
-print "| Process no. %02d |" %pid
-print "------------------"
-print ""
-print "General simulation info:"
+print("")
+print("------------------")
+print("| Process no. %02d |" %pid)
+print("------------------")
+print("")
+print("General simulation info:")
 if fixed_density == True:
-    print "     Fixed density: %g" %density
+    print("     Fixed density: %g" %density)
 else:
-    print "     Box size: %g x %g" %(L0,L0)
-print "     Simulation time: %g in %g steps of size %g" %(tf,nt,dt)
-print "     %d leaders active" %N_ldr
-print "     Save file: %s" %save_file
+    print("     Box size: %g x %g" %(L0,L0))
+print("     Simulation time: %g in %g steps of size %g" %(tf,nt,dt))
+print("     %d leaders active" %N_ldr)
+print("     Save file: %s" %save_file)
 
 
 # Want to track how far we are through the parameter combinations
@@ -59,10 +59,10 @@ for N in N_list:
 
                 # Print current parameters
                 icomb += 1
-                print ""
-                print "Parameter combination %d/%d" %(icomb, parameter_combinations)
-                print "Current parameters: (N, v0, R, eta) = (%d, %g, %g, %g)" %(N,v0,R,eta)
-                print "%d steps for burn-in, %d steps with data-taking" %(nt_burn,nt)
+                print("")
+                print("Parameter combination %d/%d" %(icomb, parameter_combinations))
+                print("Current parameters: (N, v0, R, eta) = (%d, %g, %g, %g)" %(N,v0,R,eta))
+                print("%d steps for burn-in, %d steps with data-taking" %(nt_burn,nt))
 
                 # Create empty arrays for repeats
                 V_mean_repeats = np.zeros(repeats)
@@ -70,11 +70,11 @@ for N in N_list:
                 Vqu_mean_repeats = np.zeros(repeats)
 
                 # Loop over repeats
-                print "Simulation:"
+                print("Simulation:")
                 for rep in range(repeats):
 
                     # Print current repeat number
-                    print "            %d/%d" %(rep+1,repeats)
+                    print("            %d/%d" %(rep+1,repeats))
 
                     # Create a brand new initial state
                     state = model.init(L, N, v0, R, eta)
@@ -155,7 +155,7 @@ for N in N_list:
                 eU = np.std(U_dist) / np.sqrt(error_samples)
 
                 # Save results
-                print "Saving results to ", save_file
+                print("Saving results to ", save_file)
                 with open(save_file, 'a') as f:
                     f.write( "%f %d %f %f %f %f %f %f %f %f %f \n" \
                             %(L, N, v0, R, eta, V_mean, eV_mean, chi, echi, U, eU) )
@@ -172,7 +172,7 @@ for N in N_list:
                     snapshot[0,:] = [L, N, v0, R, eta]
                     snapshot[1:,:] = state
 
-                    print "Saving snapshot of final state to ", snap_file
+                    print("Saving snapshot of final state to ", snap_file)
                     np.savetxt(snap_file, snapshot)
 
                             
